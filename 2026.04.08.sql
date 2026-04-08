@@ -55,4 +55,4 @@ drop table publisher4 purge;
 
 purge RECYCLEBIN; -- 휴지통 비우기
 
-drop constraint book_isbn_pk; -- 제약 조건 제거
+alter table book drop constraint publisher_pocde_pk2; -- 제약 조건 제거
