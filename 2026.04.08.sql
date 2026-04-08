@@ -49,3 +49,8 @@ DROP TABLE publisher;
 
 DROP TABLE publisher CASCADE CONSTRAINTS; -- 강제 삭제
 DROP TABLE book;
+
+drop table publisher2 purge; -- 쓰레기 통 안남고 전부 제거
+drop table publisher4 purge;
+
+purge RECYCLEBIN; -- 휴지통 비우기
