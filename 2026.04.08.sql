@@ -54,3 +54,5 @@ drop table publisher2 purge; -- 쓰레기 통 안남고 전부 제거
 drop table publisher4 purge;
 
 purge RECYCLEBIN; -- 휴지통 비우기
+
+drop constraint book_isbn_pk; -- 제약 조건 제거
