@@ -1,23 +1,51 @@
+-- 1번
 Create Table publisher (
     pcode NUMBER(3),
-    pname VARCHAR(20),
-    address VARCHAR(50),
+    pname VARCHAR2(20),
+    address VARCHAR2(50),
+    CONSTRAINT publisher_pocde_pk PRIMARY KEY (pcode)
+);
+
+-- 2번
+Create Table publisher2 (
+    pcode NUMBER(3) CONSTRAINT publisher_pocde_pk2 PRIMARY KEY,
+    pname VARCHAR2(20),
+    address VARCHAR2(50)
+    
+);
+
+-- 4번
+create table publisher4 (
+    pcode number(3),
+    pbame varchar2(20),
+    address varchar2(50),
     PRIMARY KEY (pcode)
 );
 
 CREATE TABLE book (
-    isbn VARCHAR(20),
+    isbn CHAR(20),
     title VARCHAR(50),
     pcode NUMBER(3),
     
-    PRIMARY KEY (isbn),
-    FOREIGN KEY (pcode) REFERENCES publisher(pcode)
+    CONSTRAINT book_isbn_pk PRIMARY KEY (isbn),
+    CONSTRAINT book_pcode_fk FOREIGN KEY (pcode) REFERENCES publisher(pcode)
     ON DELETE SET NULL
 );
 
+SELECT * FROM user_indexes;
+SELECT * FROM user_constraints;
+select * from tab;
+
+INSERT INTO publisher values (100, '한빛출판사', '부산');
+INSERT INTO book values ('001', '데이터베이스', 100);
+SELECT * FROM book;
+SELECT * FROM publisher;
+
 ALTER TABLE book ADD price NUMBER(10) default(0);
 ALTER TABLE book ADD CONSTRAINT check_price check(price >= 0);
-ALTER TABLE book DROP COLUMN address;
+ALTER TABLE publisher DROP COLUMN address;
 
-select * from tab;
--- DROP TABLE publisher;
+DROP TABLE publisher;
+
+DROP TABLE publisher CASCADE CONSTRAINTS; -- 강제 삭제
+DROP TABLE book;
