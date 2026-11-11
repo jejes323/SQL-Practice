@@ -1517,14 +1517,14 @@ end;
 set serveroutput on
 set verify off
 declare
-    v_empno emp.empno%type := &사원번호;
+    v_empno emp.empno%type;
     v_ename emp.ename%type;
     v_deptno emp.deptno%type;
 begin
     select ename, deptno
         into v_ename, v_deptno
     from emp
-    where empno = v_empno;
+    where empno = &v_empno;
     
     if v_deptno = 10 then
         dbms_output.put_line('총무부');
